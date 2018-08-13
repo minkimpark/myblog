@@ -1,0 +1,52 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="css">
+
+</%block>
+
+<%block name="container">
+
+<div class="col col-xs-2 text-center" >
+  <h2 class="active"> Sign In </h2>
+
+
+  <div>
+    <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon"  width="400px" height="400px" />
+  </div>
+
+    <input type="text" id="login_id" name="login_id" placeholder="ID">
+    <input type="text" id="login_password" name="login_password" placeholder="PassWord">
+    <input id = "loginBtn" type="submit" value="Log In">
+    <input id = "mvRegist" type="submit" value="Regist">
+
+
+</div>
+
+
+</%block>
+
+
+<%block name = 'js'>
+  <script>
+      $("#mvRegist").click(function(){
+        location.href="/regist"
+      })
+
+      $("#loginBtn").click(function(){
+        var login_id = $('#login_id').val();
+        var login_password = $('#login_password').val();
+        var csrf_token = $('#csrf_token').text();
+        console.log(csrf_token)
+        $.post("login_check", {
+          id:login_id,
+          password:login_password,
+          csrfmiddlewaretoken: csrf_token,
+        })
+
+        .done(function( data ) {
+          swal("Good job!", "You clicked the button!", "success")
+          .then((result)=>{window.location.href = "/main"});
+        });
+      })
+  </script>
+</%block>

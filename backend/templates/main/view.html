@@ -1,0 +1,43 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="css">
+</%block>
+
+<%block name="container">
+  view 페이지<br>
+
+  글번호:${num} <br>
+  작성자 :${id} <br>
+  글제목:${subject}<br>
+  작성일 : ${writedate} <br>
+  조회수 : ${hits} <br>
+  내용: ${content} <br>
+  <input id="mvmain" class="btn btn-primary" type="button" value='목록'>
+  <input id="mvupdate" class="btn btn-primary" type="button" value='수정'>
+  <input id="mvdelete" class="btn btn-primary" type="button" value='삭제'>
+</%block>
+
+<%block name = 'js'>
+<script>
+  $("#mvupdate").click(function(){
+    var num = ${num};
+    location.href="/modify?num="+num
+  })
+  $("#mvdelete").click(function(){
+    var num = ${num};
+    var csrf_token = $('#csrf_token').text();
+    $.post("api_write_delete", {
+      num : num,
+      csrfmiddlewaretoken: csrf_token,
+    })
+
+    .done(function( data ) {
+      swal("Good job!", "You clicked the button!", "success")
+      .then((result)=>{window.location.href = "/main"});
+    });
+  })
+  $("#mvmain").click(function(){
+    location.href="/main";
+  })
+</script>
+</%block>

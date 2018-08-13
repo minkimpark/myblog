@@ -1,0 +1,55 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="css">
+  <link rel="stylesheet" type="text/css" href="/static/common/vendor/datatables/datatables.css">
+</%block>
+
+<%block name="container">
+  <table id="table_id" class="display">
+      <thead>
+          <tr>
+              <th>글번호</th>
+              <th>제목</th>
+              <th>아이디</th>
+              <th>등록일</th>
+              <th>조회수</th>
+
+          </tr>
+      </thead>
+      <tbody>
+        % for row in boards:
+            <tr onclick="api_write_read('${row[0]}')">
+                <td>${row[0]}</td>
+                <td>${row[2]}</td>
+                <td>${row[1]}</td>
+                <td>${row[3]}</td>
+                <td>${row[4]}</td>
+            </tr>
+        % endfor
+      </tbody>
+  </table>
+  % if 'id' in request.session:
+    <div align="right">
+      <input id="mvwrite" class="btn btn-primary" type="button" value='글쓰기'>
+    <div>
+  % endif
+
+</%block>
+
+<%block name = 'js'>
+  <script type="text/javascript" charset="utf8" src="/static/common/vendor/datatables/datatables.js"></script>
+  <script>
+  $(document).ready( function () {
+    $('#table_id').DataTable();
+  } );
+
+  $("#mvwrite").click(function(){
+    location.href="/write"
+  })
+
+  function api_write_read(index){
+  var num = index;
+  location.href="/api_write_read?num="+num
+}
+  </script>
+</%block>

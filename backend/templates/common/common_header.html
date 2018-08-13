@@ -1,0 +1,13 @@
+  <center><h1>km's blog</h1></center>
+  <div id="navbar">
+      <a href="/main">main</a>
+      <a href="#news">memo</a>
+      <a href="#contact">repository</a>
+
+      % if 'id' in request.session:
+      <a id="logout" class="login-btn" href="#">로그아웃</a>
+      % else:
+      <a class="login-btn" href="/login">로그인/회원가입</a>
+      %endif
+
+  </div>

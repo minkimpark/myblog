@@ -1,0 +1,58 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="container">
+    <center><h1>board register</h1></center>
+    <div>
+      <label for="title">제목</label>
+      <input type="text" id="subject" style="height:20px; text-align:left;">
+    </div>
+
+    <div>
+      <label for="title">내용</label>
+      <div id="summernote">
+
+      </div>
+    </div>
+
+    <div>
+      <div class="col col-xs-2 text-center">
+        <button class="btn-primary" id="api_write_create" type="button">작성</button>
+        <button class="btn-primary" type="reset">취소</button>
+      </div>
+    </div>
+</%block>
+
+<%block name = 'js'>
+<script>
+
+  $('#summernote').summernote({
+    height: 300,                 // set editor height
+    minHeight: null,             // set minimum height of editor
+    maxHeight: null,             // set maximum height of editor
+    focus: true                  // set focus to editable area after initializing summernote
+  });
+
+  $('#api_write_create').click(function(){
+    var subject = $("#subject").val();
+    var content = $('#summernote').summernote('code');
+    var csrf_token = $('#csrf_token').text();
+    var id = $('#session_id').text();
+    console.log(subject)
+    console.log(content)
+    console.log(csrf_token)
+    $.post("api_write_create", {
+      id : id,
+      subject: subject,
+      content: content,
+      csrfmiddlewaretoken: csrf_token,
+    })
+
+    .done(function( data ) {
+      swal("Good job!", "You clicked the button!", "success")
+      .then((result)=>{window.location.href = "/main"});
+    });
+  })
+
+
+</script>
+</%block>

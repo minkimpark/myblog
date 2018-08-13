@@ -1,0 +1,84 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="css">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+</%block>
+
+<%block name="container">
+<div class="col col-xs-2">
+  <div class="form-horizontal">
+    <div id="legend">
+      <legend class=""><h1>Register</h1></legend>
+    </div>
+    <div class="control-group">
+      <!-- ID -->
+      <label class="control-label"  for="username">ID</label>
+      <div class="controls">
+        <input type="text" id="userid" name="userid" placeholder="" class="input-xlarge">
+        <p class="help-block">ID can contain any letters or numbers, without spaces</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+        <p class="help-block">Please provide your Username</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input type="text" id="email" name="email" placeholder="" class="input-xlarge">
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="userpwd" name="userpwd" placeholder="" class="input-xlarge">
+        <p class="help-block">Password should be at least 4 characters</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+        <p class="help-block">Please confirm password</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button id="api_regist_create" class="btn btn-success">Register</button>
+      </div>
+    </div>
+  <div>
+<div>
+</%block>
+
+<%block name = 'js'>
+<script>
+  $('#api_regist_create').click(function(){
+    $.post("api_regist_create", {
+      userid:$('#userid').val(),
+      email:$('#email').val(),
+      username: $('#username').val(),
+      userpwd:$('#userpwd').val(),
+      csrfmiddlewaretoken: $('#csrf_token').text(),
+    })
+
+    .done(function( data ) {
+    swal("Good job!", "You clicked the button!", "success")
+    .then((result)=>{window.location.href = "/login"});
+    });
+  })
+</script>
+</%block>
