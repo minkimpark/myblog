@@ -1,13 +1,26 @@
-  <center><h1>km's blog</h1></center>
-  <div id="navbar">
-      <a href="/main">main</a>
-      <a href="#news">memo</a>
-      <a href="#contact">repository</a>
-
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <a class="navbar-brand" href="/main">KM'S BLOG</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/main">board</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#memo">memo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/upload_main">upload</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
       % if 'id' in request.session:
       <a id="logout" class="login-btn" href="#">로그아웃</a>
       % else:
       <a class="login-btn" href="/login">로그인/회원가입</a>
       %endif
-
+    </span>
   </div>
+</nav>

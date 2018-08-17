@@ -1,0 +1,24 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="container">
+    <center><h1>board register</h1></center>
+  <form method="post" enctype="multipart/form-data" action="/api_upload_write_create">
+    <div>
+      <label for="title">제목</label>
+      <input type="text" name="subject" style="height:20px; text-align:left;">
+    </div>
+
+    <div>
+      <div class="col col-xs-2 text-center">
+
+        <input type="file" name="myfile" id="myfile"/>
+        <input type='hidden' name="csrfmiddlewaretoken" value='${csrf_token}'>
+        <button class="btn-primary" id="api_upload_write_create" type="submit">작성</button>
+        <button class="btn-primary" type="reset">취소</button>
+      </div>
+    </div>
+  </form>
+</%block>
+
+<%block name = 'js'>
+</%block>

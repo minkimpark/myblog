@@ -2,20 +2,39 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>km's site</title>
+  <title>km's blog</title>
   <link rel="stylesheet" href="/static/common/vendor/bootstrap/bootstrap.css">
   <link rel="stylesheet" href="/static/common/vendor/summernote/summernote.css">
   <link rel="stylesheet" href="/static/backend/header/header.css">
   <link rel="stylesheet" href="/static/backend/login/login.css"/>
+  <style>
+    #top {
+      height: 60px;
+      position: relative;
+    }
+
+    #main {
+    float: left;
+    width: 100%;
+    position: relative;
+    }
+  </style>
   <%block name="css">
+
   </%block>
+
 </head>
 
 <body>
-  <%include file="common_header.html"/>
+  <div id="top">
+    <%include file="common_header.html"/>
+  </div>
 
-  <%block name="container">
-  </%block>
+  <div id="main">
+    <%block name="container">
+
+    </%block>
+  </div>
 
   <div id='csrf_token' hidden>${csrf_token}</div>
   % if 'id' in request.session:

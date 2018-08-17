@@ -23,3 +23,11 @@ class board(models.Model):
 
     class Meta :
         db_table = 'board'
+
+class upload(models.Model):
+    num =models.AutoField(primary_key=True)
+    subject = models.CharField(max_length=100)
+    fname = models.ImageField(blank=True, upload_to="kmweb/%Y/%m/%d")
+
+    class Meta :
+        db_table = 'upload'
