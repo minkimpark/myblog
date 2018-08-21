@@ -16,7 +16,7 @@ class board(models.Model):
     num =models.AutoField(primary_key=True)
     id=models.CharField(max_length=25)
     subject = models.CharField(max_length=100)
-    content = models.CharField(max_length=20000)
+    content = models.TextField(blank=True)
     writedate = models.DateTimeField(auto_now_add=True, blank=True)
     modify_date = models.DateTimeField(auto_now=True, blank=True)
     hits= models.IntegerField()
@@ -31,3 +31,11 @@ class upload(models.Model):
 
     class Meta :
         db_table = 'upload'
+
+class memo(models.Model):
+    num =models.AutoField(primary_key=True)
+    comment = models.CharField(max_length=10000)
+    writedate = models.DateTimeField(auto_now_add=True, blank=True)
+
+    class Meta :
+        db_table = 'memo'

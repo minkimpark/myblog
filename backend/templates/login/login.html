@@ -31,7 +31,6 @@
       $("#mvRegist").click(function(){
         location.href="/regist"
       })
-
       $("#loginBtn").click(function(){
         var login_id = $('#login_id').val();
         var login_password = $('#login_password').val();
@@ -42,7 +41,6 @@
           password:login_password,
           csrfmiddlewaretoken: csrf_token,
         })
-
         .done(function( data ) {
           swal("Good job!", "You clicked the button!", "success")
           .then((result)=>{window.location.href = "/main"});

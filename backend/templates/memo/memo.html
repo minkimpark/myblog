@@ -1,0 +1,34 @@
+<%inherit file="../common/common_index.html"/>
+
+<%block name="css">
+
+</%block>
+
+<%block name="container">
+<div>
+  <input id="comment" type='text' style="width:1000px;"><input type="button" value="등록" id="api_memo_create">
+</div>
+<div id="comment_line">
+  ${object2.id}
+</div>
+</%block>
+
+
+
+
+<%block name = 'js'>
+<script>
+$('#api_memo_create').click(function(){
+  var comment = $("#comment").val();
+  var csrf_token = $('#csrf_token').text();
+  console.log(comment);
+
+  $.post("api_memo_create", {
+    comment : comment,
+    csrfmiddlewaretoken: csrf_token,
+  })
+
+
+})
+</script>
+</%block>
