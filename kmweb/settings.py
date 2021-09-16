@@ -92,16 +92,16 @@ WSGI_APPLICATION = 'kmweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME':'kmweb',
-        'USER':'root',
-        'PASSWORD':'',
-        'HOST':'localhost',
-        'PORT':'3315',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME':'kmweb',
+#        'USER':'root',
+#        'PASSWORD':'',
+#        'HOST':'localhost',
+#        'PORT':'3315',
+#    }
+#}
 
 
 # Password validation

@@ -6,13 +6,14 @@ from django.utils import timezone
 from django.db import connections
 
 def main(request):
-    with connections['default'].cursor() as cur:
-        query = '''
-            select num,id,subject,writedate,hits
-            from board;
-        '''
-        cur.execute(query)
-        boards = cur.fetchall()
+#    with connections['default'].cursor() as cur:
+#        query = '''
+#            select num,id,subject,writedate,hits
+#            from board;
+#        '''
+#        cur.execute(query)
+#        boards = cur.fetchall()
+    boards = list()
     context = {}
     context['boards'] = boards
     return render(request, 'main/main.html', context)
